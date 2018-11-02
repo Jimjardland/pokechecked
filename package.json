@@ -1,0 +1,42 @@
+{
+  "name": "pokechecked",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/index.js",
+  "scripts": {
+    "start": "tsc && node ./build/index.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "test": "jest",
+    "test:watch": "jest --watchAll"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.5",
+    "ts-jest": "^23.10.4",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.1.0",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2"
+  }
+}

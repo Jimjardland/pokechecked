@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "lib": ["es6", "dom", "esnext"],
+    "outDir": "build"
+  },
+  "exclude": [
+      "node_modules",
+      "**/*.spec.ts",
+      "**/*.test.ts"
+  ],
+  "include": [
+      "**/**/*.ts"
+  ]
+}
