@@ -1,41 +1,8 @@
 const express = require('express')
-const { ApolloServer, gql } = require('apollo-server-express')
-import { fetchHighlights } from './lib/highlights'
+const { ApolloServer } = require('apollo-server-express')
+import schema from './lib/graphql/schema'
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Game {
-    homeTeam: String
-    awayTeam: String
-    homeGoals: Int
-    awayGoals: Int
-    homeWin: Boolean
-    arena: String
-    date: String
-    gameIsFinished: Boolean
-    requiredOvertime: Boolean
-    url: String
-  }
-
-  type Highlights {
-    day: String
-    games: [Game]
-  }
-
-
-  type Query {
-    fetchHighlights (Hello: String) : [Highlights]
-  }
-`
-
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    fetchHighlights
-  },
-}
-
-const server = new ApolloServer({ typeDefs, resolvers })
+const server = new ApolloServer({ typeDefs: schema.typeDefs, resolvers: schema.resolvers })
 
 const app = express()
 server.applyMiddleware({ app })
