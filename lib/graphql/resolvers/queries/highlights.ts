@@ -19,20 +19,20 @@ export const fetchHighlights: QueryResolvers['fetchHighlights'] = async (
     leaderCategories: 'points,goals,assists',
     leaderGameTypes: 'R',
     expand:
-      'schedule.teams,schedule.linescore,schedule.game.content.media.epg,schedule.decisions,schedule.scoringplays,schedule.game.content'
+      'schedule.teams,schedule.linescore,schedule.game.content.media.epg,schedule.decisions,schedule.scoringplays,schedule.game.content',
   }
 
   const url = `${config.nhl.baseUrl}/schedule?${queryString.stringify(params)}`
 
   const { body: gameData } = await got(url, {
     json: true,
-    headers: { 'Content-type': 'application/json' }
+    headers: { 'Content-type': 'application/json' },
   })
 
   return gameData.dates.map(gameDay => {
     return {
       day: moment(gameDay.date).format('dddd MMMM Do YYYY'),
-      games: formatGames(gameDay.games)
+      games: formatGames(gameDay.games),
     }
   })
 }

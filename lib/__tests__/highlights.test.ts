@@ -17,7 +17,7 @@ describe('Highlights', () => {
             arena: 'Gila River Arena',
             date: '2018-11-03T02:00:00Z',
             winner: 'Carolina Hurricanes',
-            gameFinished: false
+            gameFinished: false,
           },
           {
             homeTeam: 'Vancouver Canucks',
@@ -28,7 +28,7 @@ describe('Highlights', () => {
             arena: 'Rogers Arena',
             date: '2018-11-03T02:00:00Z',
             winner: 'Colorado Avalanche',
-            gameFinished: false
+            gameFinished: false,
           },
           {
             homeTeam: 'Winnipeg Jets',
@@ -39,10 +39,10 @@ describe('Highlights', () => {
             arena: 'Hartwall Arena',
             date: '2018-11-02T18:00:00Z',
             winner: 'Florida Panthers',
-            gameFinished: false
-          }
+            gameFinished: false,
+          },
         ],
-        gameFinished: false
+        gameFinished: false,
       },
       {
         date: 'Thursday November 1st 2018',
@@ -57,7 +57,7 @@ describe('Highlights', () => {
             date: '2018-11-02T02:30:00Z',
             winner: 'Columbus Blue Jackets',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62551103&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62551103&autoplay=true',
           },
           {
             homeTeam: 'Los Angeles Kings',
@@ -69,7 +69,7 @@ describe('Highlights', () => {
             date: '2018-11-02T02:30:00Z',
             winner: 'Philadelphia Flyers',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62550203&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62550203&autoplay=true',
           },
           {
             homeTeam: 'Anaheim Ducks',
@@ -82,7 +82,7 @@ describe('Highlights', () => {
             winner: 'New York Rangers',
             gameFinished: true,
             url: 'https://www.nhl.com/video/embed/c-62552203&autoplay=true',
-            endedWith: 'SO'
+            endedWith: 'SO',
           },
           {
             homeTeam: 'Edmonton Oilers',
@@ -94,7 +94,7 @@ describe('Highlights', () => {
             date: '2018-11-02T01:00:00Z',
             winner: 'Edmonton Oilers',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62547203&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62547203&autoplay=true',
           },
           {
             homeTeam: 'Calgary Flames',
@@ -106,7 +106,7 @@ describe('Highlights', () => {
             date: '2018-11-02T01:00:00Z',
             winner: 'Calgary Flames',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62547403&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62547403&autoplay=true',
           },
           {
             homeTeam: 'St. Louis Blues',
@@ -118,7 +118,7 @@ describe('Highlights', () => {
             date: '2018-11-02T00:00:00Z',
             winner: 'St. Louis Blues',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62545203&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62545203&autoplay=true',
           },
           {
             homeTeam: 'Tampa Bay Lightning',
@@ -130,7 +130,7 @@ describe('Highlights', () => {
             date: '2018-11-01T23:30:00Z',
             winner: 'Nashville Predators',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62545303&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62545303&autoplay=true',
           },
           {
             homeTeam: 'Detroit Red Wings',
@@ -142,7 +142,7 @@ describe('Highlights', () => {
             date: '2018-11-01T23:30:00Z',
             winner: 'Detroit Red Wings',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62543903&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62543903&autoplay=true',
           },
           {
             homeTeam: 'Ottawa Senators',
@@ -154,7 +154,7 @@ describe('Highlights', () => {
             date: '2018-11-01T23:30:00Z',
             winner: 'Ottawa Senators',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62543003&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62543003&autoplay=true',
           },
           {
             homeTeam: 'Montréal Canadiens',
@@ -166,7 +166,7 @@ describe('Highlights', () => {
             date: '2018-11-01T23:30:00Z',
             winner: 'Montréal Canadiens',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62541903&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62541903&autoplay=true',
           },
           {
             homeTeam: 'New York Islanders',
@@ -179,7 +179,7 @@ describe('Highlights', () => {
             winner: 'New York Islanders',
             gameFinished: true,
             url: 'https://www.nhl.com/video/embed/c-62539503&autoplay=true',
-            endedWith: 'SO'
+            endedWith: 'SO',
           },
           {
             homeTeam: 'Toronto Maple Leafs',
@@ -191,7 +191,7 @@ describe('Highlights', () => {
             date: '2018-11-01T23:00:00Z',
             winner: 'Dallas Stars',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62539803&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62539803&autoplay=true',
           },
           {
             homeTeam: 'Florida Panthers',
@@ -203,10 +203,10 @@ describe('Highlights', () => {
             date: '2018-11-01T18:00:00Z',
             winner: 'Winnipeg Jets',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62511803&autoplay=true'
-          }
+            url: 'https://www.nhl.com/video/embed/c-62511803&autoplay=true',
+          },
         ],
-        gameFinished: true
+        gameFinished: true,
       },
       {
         date: 'Wednesday October 31st 2018',
@@ -221,10 +221,10 @@ describe('Highlights', () => {
             date: '2018-11-01T02:00:00Z',
             winner: 'Vancouver Canucks',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62495803&autoplay=true'
-          }
+            url: 'https://www.nhl.com/video/embed/c-62495803&autoplay=true',
+          },
         ],
-        gameFinished: true
+        gameFinished: true,
       },
       {
         date: 'Tuesday October 30th 2018',
@@ -240,7 +240,7 @@ describe('Highlights', () => {
             winner: 'New York Rangers',
             gameFinished: true,
             url: 'https://www.nhl.com/video/embed/c-62479703&autoplay=true',
-            endedWith: 'SO'
+            endedWith: 'SO',
           },
           {
             homeTeam: 'Anaheim Ducks',
@@ -252,7 +252,7 @@ describe('Highlights', () => {
             date: '2018-10-31T02:00:00Z',
             winner: 'Philadelphia Flyers',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62478103&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62478103&autoplay=true',
           },
           {
             homeTeam: 'Arizona Coyotes',
@@ -264,7 +264,7 @@ describe('Highlights', () => {
             date: '2018-10-31T02:00:00Z',
             winner: 'Arizona Coyotes',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62478903&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62478903&autoplay=true',
           },
           {
             homeTeam: 'Edmonton Oilers',
@@ -276,7 +276,7 @@ describe('Highlights', () => {
             date: '2018-10-31T01:00:00Z',
             winner: 'Minnesota Wild',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62476803&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62476803&autoplay=true',
           },
           {
             homeTeam: 'Nashville Predators',
@@ -288,7 +288,7 @@ describe('Highlights', () => {
             date: '2018-10-31T00:00:00Z',
             winner: 'Nashville Predators',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62472903&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62472903&autoplay=true',
           },
           {
             homeTeam: 'Tampa Bay Lightning',
@@ -300,7 +300,7 @@ describe('Highlights', () => {
             date: '2018-10-30T23:30:00Z',
             winner: 'Tampa Bay Lightning',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62472403&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62472403&autoplay=true',
           },
           {
             homeTeam: 'Montréal Canadiens',
@@ -312,7 +312,7 @@ describe('Highlights', () => {
             date: '2018-10-30T23:30:00Z',
             winner: 'Dallas Stars',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62472303&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62472303&autoplay=true',
           },
           {
             homeTeam: 'Columbus Blue Jackets',
@@ -324,7 +324,7 @@ describe('Highlights', () => {
             date: '2018-10-30T23:00:00Z',
             winner: 'Detroit Red Wings',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62473803&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62473803&autoplay=true',
           },
           {
             homeTeam: 'Carolina Hurricanes',
@@ -336,7 +336,7 @@ describe('Highlights', () => {
             date: '2018-10-30T23:00:00Z',
             winner: 'Boston Bruins',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62470703&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62470703&autoplay=true',
           },
           {
             homeTeam: 'Pittsburgh Penguins',
@@ -348,7 +348,7 @@ describe('Highlights', () => {
             date: '2018-10-30T23:00:00Z',
             winner: 'New York Islanders',
             gameFinished: true,
-            url: 'https://www.nhl.com/video/embed/c-62465803&autoplay=true'
+            url: 'https://www.nhl.com/video/embed/c-62465803&autoplay=true',
           },
           {
             homeTeam: 'Buffalo Sabres',
@@ -361,11 +361,11 @@ describe('Highlights', () => {
             winner: 'Calgary Flames',
             gameFinished: true,
             url: 'https://www.nhl.com/video/embed/c-62473703&autoplay=true',
-            endedWith: 'OT'
-          }
+            endedWith: 'OT',
+          },
         ],
-        gameFinished: true
-      }
+        gameFinished: true,
+      },
     ]
     epgs = [
       {
@@ -382,7 +382,7 @@ describe('Highlights', () => {
             language: 'eng',
             freeGame: false,
             feedName: '',
-            gamePlus: false
+            gamePlus: false,
           },
           {
             guid: '814481e8-10c5-46f9-a086-a7c5b428ad41',
@@ -394,7 +394,7 @@ describe('Highlights', () => {
             language: 'eng',
             freeGame: false,
             feedName: '',
-            gamePlus: false
+            gamePlus: false,
           },
           {
             guid: '7c543b8c-9e53-4f30-bc56-e36386aef591',
@@ -406,9 +406,9 @@ describe('Highlights', () => {
             language: 'eng',
             freeGame: false,
             feedName: 'Multi-Cam 1',
-            gamePlus: false
-          }
-        ]
+            gamePlus: false,
+          },
+        ],
       },
       {
         title: 'Recap',
@@ -422,7 +422,7 @@ describe('Highlights', () => {
             language: 'eng',
             freeGame: false,
             feedName: '',
-            gamePlus: false
+            gamePlus: false,
           },
           {
             mediaState: 'MEDIA_OFF',
@@ -433,24 +433,24 @@ describe('Highlights', () => {
             language: 'eng',
             freeGame: false,
             feedName: '',
-            gamePlus: false
-          }
-        ]
+            gamePlus: false,
+          },
+        ],
       },
       {
         title: 'Extended Highlights',
         topicList: '299968858',
-        items: []
+        items: [],
       },
       {
         title: 'Recap',
         topicList: '299968858',
-        items: []
+        items: [],
       },
       {
         title: 'Power Play',
-        items: []
-      }
+        items: [],
+      },
     ]
   })
 

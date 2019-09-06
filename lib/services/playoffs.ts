@@ -15,7 +15,7 @@ const getMatchUps = (retVal, settings) => {
       matchUp(
         retVal.divisionLeaders[settings.conference][settings.division1][1],
         retVal.divisionLeaders[settings.conference][settings.division1][2]
-      )
+      ),
     ]
   } else {
     return [
@@ -28,7 +28,7 @@ const getMatchUps = (retVal, settings) => {
         retVal.divisionLeaders[settings.conference][settings.division1][1],
         retVal.divisionLeaders[settings.conference][settings.division1][2]
       ),
-      matchUp(conferenceTop[0], retVal.wildCard[settings.conference][1])
+      matchUp(conferenceTop[0], retVal.wildCard[settings.conference][1]),
     ]
   }
 }
@@ -52,25 +52,25 @@ export const buildPlayOff = json => {
     wildCard: {},
     divisionLeaders: {
       Eastern: {
-        teams: []
+        teams: [],
       },
       Western: {
-        teams: []
-      }
-    }
+        teams: [],
+      },
+    },
   }
 
   const settings = {
     eastern: {
       conference: 'Eastern',
       division1: 'Atlantic',
-      division2: 'Metropolitan'
+      division2: 'Metropolitan',
     },
     western: {
       conference: 'Western',
       division1: 'Central',
-      division2: 'Pacific'
-    }
+      division2: 'Pacific',
+    },
   }
 
   for (var i = 0; i < json.length; i++) {
@@ -88,6 +88,6 @@ export const buildPlayOff = json => {
 
   return {
     western: getMatchUps(retVal, settings.western),
-    eastern: getMatchUps(retVal, settings.eastern)
+    eastern: getMatchUps(retVal, settings.eastern),
   }
 }

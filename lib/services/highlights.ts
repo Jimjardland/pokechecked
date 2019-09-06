@@ -35,7 +35,7 @@ export const formatGames = (games): Game => {
         gameIsFinished && game.linescore.currentPeriodOrdinal !== '3rd',
       url: getHighlightsUrl(game.content.media.epg),
       stars: getStars(game.decisions),
-      scorers: getScorers(game.scoringPlays)
+      scorers: getScorers(game.scoringPlays),
     }
   })
 }
@@ -44,16 +44,16 @@ const getStars = ({ firstStar, secondStar, thirdStar }: any): PlayerInfo[] => {
   return [
     {
       ...firstStar,
-      position: 1
+      position: 1,
     },
     {
       ...secondStar,
-      position: 2
+      position: 2,
     },
     {
       ...thirdStar,
-      position: 3
-    }
+      position: 3,
+    },
   ]
 }
 
@@ -75,7 +75,7 @@ const getScorers = (data: any): [] => {
       emptyNet: play.result.emptyNet,
       strength: play.result.strength.code,
       period: play.about.ordinalNum,
-      time: play.about.periodTime
+      time: play.about.periodTime,
     }
   })
 }

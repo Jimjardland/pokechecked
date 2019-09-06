@@ -20,7 +20,7 @@ export const getPlayoffs: QueryResolvers['getPlayoffs'] = async () => {
 
   const { body: playoffData } = await got(url, {
     json: true,
-    headers: { 'Content-type': 'application/json' }
+    headers: { 'Content-type': 'application/json' },
   })
 
   return buildPlayOff(playoffData)
