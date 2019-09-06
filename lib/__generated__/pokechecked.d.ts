@@ -58,6 +58,12 @@ export type Highlights = {
   games?: Maybe<Array<Maybe<Game>>>;
 };
 
+export type Matchup = {
+  __typename?: "Matchup";
+  team1?: Maybe<Team>;
+  team2?: Maybe<Team>;
+};
+
 export type Player = {
   __typename?: "Player";
   player?: Maybe<PlayerInfo>;
@@ -71,14 +77,36 @@ export type PlayerInfo = {
   position?: Maybe<Scalars["Int"]>;
 };
 
+export type Playoffs = {
+  __typename?: "Playoffs";
+  eastern?: Maybe<Array<Maybe<Matchup>>>;
+  western?: Maybe<Array<Maybe<Matchup>>>;
+};
+
 export type Query = {
   __typename?: "Query";
+  getPlayoffs?: Maybe<Playoffs>;
   fetchHighlights?: Maybe<Array<Maybe<Highlights>>>;
 };
 
 export type QueryFetchHighlightsArgs = {
   from?: Maybe<Scalars["String"]>;
   to?: Maybe<Scalars["String"]>;
+};
+
+export type Team = {
+  __typename?: "Team";
+  team?: Maybe<TeamInfo>;
+  leagueRank?: Maybe<Scalars["String"]>;
+  leagueL10Rank?: Maybe<Scalars["String"]>;
+  leagueRoadRank?: Maybe<Scalars["String"]>;
+  leagueHomeRank?: Maybe<Scalars["String"]>;
+  wildCardRank?: Maybe<Scalars["String"]>;
+};
+
+export type TeamInfo = {
+  __typename?: "TeamInfo";
+  name?: Maybe<Scalars["String"]>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -151,6 +179,10 @@ export type DirectiveResolverFn<
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>;
+  Playoffs: ResolverTypeWrapper<Playoffs>;
+  Matchup: ResolverTypeWrapper<Matchup>;
+  Team: ResolverTypeWrapper<Team>;
+  TeamInfo: ResolverTypeWrapper<TeamInfo>;
   String: ResolverTypeWrapper<Scalars["String"]>;
   Highlights: ResolverTypeWrapper<Highlights>;
   Game: ResolverTypeWrapper<Game>;
@@ -166,6 +198,10 @@ export type ResolversTypes = {
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Query: {};
+  Playoffs: Playoffs;
+  Matchup: Matchup;
+  Team: Team;
+  TeamInfo: TeamInfo;
   String: Scalars["String"];
   Highlights: Highlights;
   Game: Game;
@@ -257,6 +293,14 @@ export type HighlightsResolvers<
   >;
 };
 
+export type MatchupResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes["Matchup"] = ResolversParentTypes["Matchup"]
+> = {
+  team1?: Resolver<Maybe<ResolversTypes["Team"]>, ParentType, ContextType>;
+  team2?: Resolver<Maybe<ResolversTypes["Team"]>, ParentType, ContextType>;
+};
+
 export type PlayerResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["Player"] = ResolversParentTypes["Player"]
@@ -278,16 +322,76 @@ export type PlayerInfoResolvers<
   position?: Resolver<Maybe<ResolversTypes["Int"]>, ParentType, ContextType>;
 };
 
+export type PlayoffsResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes["Playoffs"] = ResolversParentTypes["Playoffs"]
+> = {
+  eastern?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes["Matchup"]>>>,
+    ParentType,
+    ContextType
+  >;
+  western?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes["Matchup"]>>>,
+    ParentType,
+    ContextType
+  >;
+};
+
 export type QueryResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["Query"] = ResolversParentTypes["Query"]
 > = {
+  getPlayoffs?: Resolver<
+    Maybe<ResolversTypes["Playoffs"]>,
+    ParentType,
+    ContextType
+  >;
   fetchHighlights?: Resolver<
     Maybe<Array<Maybe<ResolversTypes["Highlights"]>>>,
     ParentType,
     ContextType,
     QueryFetchHighlightsArgs
   >;
+};
+
+export type TeamResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes["Team"] = ResolversParentTypes["Team"]
+> = {
+  team?: Resolver<Maybe<ResolversTypes["TeamInfo"]>, ParentType, ContextType>;
+  leagueRank?: Resolver<
+    Maybe<ResolversTypes["String"]>,
+    ParentType,
+    ContextType
+  >;
+  leagueL10Rank?: Resolver<
+    Maybe<ResolversTypes["String"]>,
+    ParentType,
+    ContextType
+  >;
+  leagueRoadRank?: Resolver<
+    Maybe<ResolversTypes["String"]>,
+    ParentType,
+    ContextType
+  >;
+  leagueHomeRank?: Resolver<
+    Maybe<ResolversTypes["String"]>,
+    ParentType,
+    ContextType
+  >;
+  wildCardRank?: Resolver<
+    Maybe<ResolversTypes["String"]>,
+    ParentType,
+    ContextType
+  >;
+};
+
+export type TeamInfoResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes["TeamInfo"] = ResolversParentTypes["TeamInfo"]
+> = {
+  name?: Resolver<Maybe<ResolversTypes["String"]>, ParentType, ContextType>;
 };
 
 export interface UploadScalarConfig
@@ -299,9 +403,13 @@ export type Resolvers<ContextType = any> = {
   Game?: GameResolvers<ContextType>;
   Goal?: GoalResolvers<ContextType>;
   Highlights?: HighlightsResolvers<ContextType>;
+  Matchup?: MatchupResolvers<ContextType>;
   Player?: PlayerResolvers<ContextType>;
   PlayerInfo?: PlayerInfoResolvers<ContextType>;
+  Playoffs?: PlayoffsResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Team?: TeamResolvers<ContextType>;
+  TeamInfo?: TeamInfoResolvers<ContextType>;
   Upload?: GraphQLScalarType;
 };
 

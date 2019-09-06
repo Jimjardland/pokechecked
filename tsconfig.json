@@ -1,14 +1,11 @@
 {
   "compilerOptions": {
     "lib": ["es6", "dom", "esnext"],
-    "outDir": "build"
+    "resolveJsonModule": true,
+    "outDir": "build",
+    "rootDir": "./",
+    "baseUrl": "."
   },
-  "exclude": [
-      "node_modules",
-      "**/*.spec.ts",
-      "**/*.test.ts"
-  ],
-  "include": [
-      "**/**/*.ts"
-  ]
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
+  "include": ["**/**/*.ts"]
 }

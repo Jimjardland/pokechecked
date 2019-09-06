@@ -1,5 +1,5 @@
 import 'jest'
-import * as highlights from '../graphql/resolvers/queries/highlights'
+import { getHighlightsUrl } from '../services/highlights'
 
 describe('Highlights', () => {
   let epgs, highlightsResult
@@ -456,7 +456,7 @@ describe('Highlights', () => {
 
   describe('#getHightlightsUrl', () => {
     it('Returns the correct url', () => {
-      expect(highlights.getHighlightsUrl(epgs)).toEqual(
+      expect(getHighlightsUrl(epgs)).toEqual(
         'https://www.nhl.com/video/embed/c-62111703&autoplay=true'
       )
     })

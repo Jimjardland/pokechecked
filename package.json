@@ -15,6 +15,9 @@
     "transform": {
       ".(ts|tsx)": "ts-jest"
     },
+    "testPathIgnorePatterns": [
+      "__fixtures__"
+    ],
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
@@ -41,8 +44,11 @@
     "typescript": "^3.1.6"
   },
   "dependencies": {
+    "@iteam/config": "^12.1.0",
     "apollo-server-express": "^2.1.0",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "got": "^9.6.0",
     "graphql": "^14.0.2",
     "moment": "^2.24.0",
     "query-string": "^6.8.2"

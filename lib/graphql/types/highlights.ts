@@ -43,8 +43,4 @@ export const typeDefs = gql`
     day: String
     games: [Game]
   }
-
-  type Query {
-    fetchHighlights(from: String, to: String): [Highlights]
-  }
 `
