@@ -42,7 +42,7 @@ export type Game = {
 export type Goal = {
   __typename?: 'Goal'
   scorer?: Maybe<Player>
-  assist?: Maybe<Player>
+  assist?: Maybe<Array<Maybe<Player>>>
   homeTeamScored?: Maybe<Scalars['Boolean']>
   gwg?: Maybe<Scalars['Boolean']>
   emptyNet?: Maybe<Scalars['Boolean']>
@@ -65,10 +65,19 @@ export type Matchup = {
   team2?: Maybe<Team>
 }
 
+export type PersonInfo = {
+  __typename?: 'PersonInfo'
+  id?: Maybe<Scalars['Int']>
+  primaryNumber?: Maybe<Scalars['Int']>
+  nationality?: Maybe<Scalars['String']>
+  captain?: Maybe<Scalars['Boolean']>
+}
+
 export type Player = {
   __typename?: 'Player'
   player?: Maybe<PlayerInfo>
   seasonTotal?: Maybe<Scalars['Int']>
+  personInfo?: Maybe<PersonInfo>
 }
 
 export type PlayerInfo = {
@@ -77,6 +86,7 @@ export type PlayerInfo = {
   fullName?: Maybe<Scalars['String']>
   position?: Maybe<Scalars['Int']>
   image?: Maybe<Scalars['String']>
+  personInfo?: Maybe<PersonInfo>
 }
 
 export type Playoffs = {
@@ -191,6 +201,7 @@ export type ResolversTypes = {
   Int: ResolverTypeWrapper<Scalars['Int']>
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>
   PlayerInfo: ResolverTypeWrapper<PlayerInfo>
+  PersonInfo: ResolverTypeWrapper<PersonInfo>
   Goal: ResolverTypeWrapper<Goal>
   Player: ResolverTypeWrapper<Player>
   CacheControlScope: CacheControlScope
@@ -210,6 +221,7 @@ export type ResolversParentTypes = {
   Int: Scalars['Int']
   Boolean: Scalars['Boolean']
   PlayerInfo: PlayerInfo
+  PersonInfo: PersonInfo
   Goal: Goal
   Player: Player
   CacheControlScope: CacheControlScope
@@ -265,7 +277,11 @@ export type GoalResolvers<
   ParentType extends ResolversParentTypes['Goal'] = ResolversParentTypes['Goal']
 > = {
   scorer?: Resolver<Maybe<ResolversTypes['Player']>, ParentType, ContextType>
-  assist?: Resolver<Maybe<ResolversTypes['Player']>, ParentType, ContextType>
+  assist?: Resolver<
+    Maybe<Array<Maybe<ResolversTypes['Player']>>>,
+    ParentType,
+    ContextType
+  >
   homeTeamScored?: Resolver<
     Maybe<ResolversTypes['Boolean']>,
     ParentType,
@@ -304,6 +320,24 @@ export type MatchupResolvers<
   team2?: Resolver<Maybe<ResolversTypes['Team']>, ParentType, ContextType>
 }
 
+export type PersonInfoResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['PersonInfo'] = ResolversParentTypes['PersonInfo']
+> = {
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>
+  primaryNumber?: Resolver<
+    Maybe<ResolversTypes['Int']>,
+    ParentType,
+    ContextType
+  >
+  nationality?: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >
+  captain?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>
+}
+
 export type PlayerResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['Player'] = ResolversParentTypes['Player']
@@ -314,6 +348,11 @@ export type PlayerResolvers<
     ContextType
   >
   seasonTotal?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>
+  personInfo?: Resolver<
+    Maybe<ResolversTypes['PersonInfo']>,
+    ParentType,
+    ContextType
+  >
 }
 
 export type PlayerInfoResolvers<
@@ -324,6 +363,11 @@ export type PlayerInfoResolvers<
   fullName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>
   position?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>
+  personInfo?: Resolver<
+    Maybe<ResolversTypes['PersonInfo']>,
+    ParentType,
+    ContextType
+  >
 }
 
 export type PlayoffsResolvers<
@@ -408,6 +452,7 @@ export type Resolvers<ContextType = any> = {
   Goal?: GoalResolvers<ContextType>
   Highlights?: HighlightsResolvers<ContextType>
   Matchup?: MatchupResolvers<ContextType>
+  PersonInfo?: PersonInfoResolvers<ContextType>
   Player?: PlayerResolvers<ContextType>
   PlayerInfo?: PlayerInfoResolvers<ContextType>
   Playoffs?: PlayoffsResolvers<ContextType>

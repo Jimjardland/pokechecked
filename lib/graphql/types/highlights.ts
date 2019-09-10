@@ -18,7 +18,7 @@ export const typeDefs = gql`
 
   type Goal {
     scorer: Player
-    assist: Player
+    assist: [Player]
     homeTeamScored: Boolean
     gwg: Boolean
     emptyNet: Boolean
@@ -29,16 +29,25 @@ export const typeDefs = gql`
     standing: String
   }
 
+  type PersonInfo {
+    id: Int
+    primaryNumber: Int
+    nationality: String
+    captain: Boolean
+  }
+
   type PlayerInfo {
     id: Int
     fullName: String
     position: Int
     image: String
+    personInfo: PersonInfo
   }
 
   type Player {
     player: PlayerInfo
     seasonTotal: Int
+    personInfo: PersonInfo
   }
 
   type Highlights {

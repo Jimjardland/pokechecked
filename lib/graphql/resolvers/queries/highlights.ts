@@ -19,7 +19,7 @@ export const fetchHighlights: QueryResolvers['fetchHighlights'] = async (
     leaderCategories: 'points,goals,assists',
     leaderGameTypes: 'R',
     expand:
-      'schedule.teams,schedule.linescore,schedule.game.content.media.epg,schedule.decisions,schedule.scoringplays,schedule.game.content',
+      'schedule.teams,schedule.linescore,schedule.game.content.media.epg,schedule.decisions,schedule.scoringplays,schedule.game.content,team.roster,roster.person',
   }
 
   const url = `${config.nhl.baseUrl}/schedule?${queryString.stringify(params)}`

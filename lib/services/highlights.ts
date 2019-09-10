@@ -1,7 +1,15 @@
-import { Game, PlayerInfo, Goal } from '../__generated__/pokechecked'
+import {
+  Game,
+  PlayerInfo,
+  Goal,
+  PersonInfo,
+} from '../__generated__/pokechecked'
 
 const getImageUrl = (id: number): String =>
   `http://nhl.bamcontent.com/images/headshots/current/60x60/${id}@2x.jpg`
+
+const findPersonInfo = (id: Number, personInfo: PersonInfo[]): PersonInfo =>
+  personInfo.find(person => person.id === id)
 
 interface Item {
   guid: String
@@ -22,8 +30,21 @@ interface Epg {
   items: Item[]
 }
 
+const getPersonInfo = (roster: any): PersonInfo[] =>
+  roster.map(({ person }) => ({
+    id: person.id,
+    primaryNumber: parseInt(person.primaryNumber, 10),
+    nationality: person.nationality,
+    captain: person.captain,
+  }))
+
 export const formatGames = (games): Game => {
   return games.map(game => {
+    const personInfo = getPersonInfo([
+      ...game.teams.home.team.roster.roster,
+      ...game.teams.away.team.roster.roster,
+    ])
+
     const gameIsFinished = game.linescore.currentPeriodTimeRemaining === 'Final'
     const homeTeam = game.teams.home.team
     return {
@@ -38,44 +59,60 @@ export const formatGames = (games): Game => {
       requiredOvertime:
         gameIsFinished && game.linescore.currentPeriodOrdinal !== '3rd',
       url: getHighlightsUrl(game.content.media.epg),
-      stars: getStars(game.decisions),
-      scorers: getScorers(game.scoringPlays, homeTeam.id),
+      stars: getStars(game.decisions, personInfo),
+      scorers: getScorers(game.scoringPlays, homeTeam.id, personInfo),
     }
   })
 }
 
-const getStars = ({ firstStar, secondStar, thirdStar }: any): PlayerInfo[] => {
+const getStars = (
+  { firstStar, secondStar, thirdStar }: any,
+  roster: PersonInfo[]
+): PlayerInfo[] => {
   return [
     {
       ...firstStar,
       position: 1,
       image: getImageUrl(firstStar.id),
+      personInfo: findPersonInfo(firstStar.id, roster),
     },
     {
       ...secondStar,
       position: 2,
       image: getImageUrl(secondStar.id),
+      personInfo: findPersonInfo(secondStar.id, roster),
     },
     {
       ...thirdStar,
       position: 3,
       image: getImageUrl(thirdStar.id),
+      personInfo: findPersonInfo(thirdStar.id, roster),
     },
   ]
 }
 
-const getScorers = (data: any, homeTeamId: number): [Goal] => {
+const getScorers = (
+  data: any,
+  homeTeamId: number,
+  roster: PersonInfo[]
+): [Goal] => {
   return data.map(play => {
     const scorer = play.players.find(info =>
       info.playerType === 'Scorer' ? info : null
     )
-    const assist = play.players.find(info =>
+    const assist = play.players.filter(info =>
       info.playerType === 'Assist' ? info : null
     )
 
     return {
-      scorer,
-      assist,
+      scorer: {
+        ...scorer,
+        personInfo: findPersonInfo(scorer.player.id, roster),
+      },
+      assist: assist.map(assist => ({
+        ...assist,
+        personInfo: findPersonInfo(assist.player.id, roster),
+      })),
       homeTeamScored: homeTeamId === play.team.id,
       description: play.result.description,
       standing: `${play.about.goals.home}-${play.about.goals.away}`,
