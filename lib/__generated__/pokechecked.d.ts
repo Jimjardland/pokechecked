@@ -76,6 +76,7 @@ export type PlayerInfo = {
   id?: Maybe<Scalars['Int']>
   fullName?: Maybe<Scalars['String']>
   position?: Maybe<Scalars['Int']>
+  image?: Maybe<Scalars['String']>
 }
 
 export type Playoffs = {
@@ -322,6 +323,7 @@ export type PlayerInfoResolvers<
   id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>
   fullName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>
   position?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>
+  image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>
 }
 
 export type PlayoffsResolvers<

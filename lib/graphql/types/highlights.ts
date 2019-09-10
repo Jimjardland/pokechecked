@@ -33,6 +33,7 @@ export const typeDefs = gql`
     id: Int
     fullName: String
     position: Int
+    image: String
   }
 
   type Player {

@@ -1,5 +1,8 @@
 import { Game, PlayerInfo, Goal } from '../__generated__/pokechecked'
 
+const getImageUrl = (id: number): String =>
+  `http://nhl.bamcontent.com/images/headshots/current/60x60/${id}@2x.jpg`
+
 interface Item {
   guid: String
   mediastate: String
@@ -46,14 +49,17 @@ const getStars = ({ firstStar, secondStar, thirdStar }: any): PlayerInfo[] => {
     {
       ...firstStar,
       position: 1,
+      image: getImageUrl(firstStar.id),
     },
     {
       ...secondStar,
       position: 2,
+      image: getImageUrl(secondStar.id),
     },
     {
       ...thirdStar,
       position: 3,
+      image: getImageUrl(thirdStar.id),
     },
   ]
 }
