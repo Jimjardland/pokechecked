@@ -1,4 +1,4 @@
-import { Game, PlayerInfo } from '../__generated__/pokechecked'
+import { Game, PlayerInfo, Goal } from '../__generated__/pokechecked'
 
 interface Item {
   guid: String
@@ -22,8 +22,9 @@ interface Epg {
 export const formatGames = (games): Game => {
   return games.map(game => {
     const gameIsFinished = game.linescore.currentPeriodTimeRemaining === 'Final'
+    const homeTeam = game.teams.home.team
     return {
-      homeTeam: game.teams.home.team.name,
+      homeTeam: homeTeam.name,
       awayTeam: game.teams.away.team.name,
       homeGoals: game.teams.home.score,
       awayGoals: game.teams.away.score,
@@ -35,7 +36,7 @@ export const formatGames = (games): Game => {
         gameIsFinished && game.linescore.currentPeriodOrdinal !== '3rd',
       url: getHighlightsUrl(game.content.media.epg),
       stars: getStars(game.decisions),
-      scorers: getScorers(game.scoringPlays),
+      scorers: getScorers(game.scoringPlays, homeTeam.id),
     }
   })
 }
@@ -57,7 +58,7 @@ const getStars = ({ firstStar, secondStar, thirdStar }: any): PlayerInfo[] => {
   ]
 }
 
-const getScorers = (data: any): [] => {
+const getScorers = (data: any, homeTeamId: number): [Goal] => {
   return data.map(play => {
     const scorer = play.players.find(info =>
       info.playerType === 'Scorer' ? info : null
@@ -69,6 +70,7 @@ const getScorers = (data: any): [] => {
     return {
       scorer,
       assist,
+      homeTeamScored: homeTeamId === play.team.id,
       description: play.result.description,
       standing: `${play.about.goals.home}-${play.about.goals.away}`,
       gwg: play.result.gameWinningGoal,

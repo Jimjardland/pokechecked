@@ -19,6 +19,7 @@ export const typeDefs = gql`
   type Goal {
     scorer: Player
     assist: Player
+    homeTeamScored: Boolean
     gwg: Boolean
     emptyNet: Boolean
     strength: String
